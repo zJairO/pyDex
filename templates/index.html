@@ -13,23 +13,26 @@
     <title>PyDex</title>
 </head>
 <nav style="text-align: center;">
-    <a href="/"><img src="{{ url_for('static', filename='logo.png') }}" style="margin-bottom: 1em; width: 100%; height: auto;"></a>
+    <a href="/"><img src="{{ url_for('static', filename='logo.png') }}"
+            style="margin-bottom: 1em; width: 100%; height: auto;"></a>
     </div>
 </nav>
 
 <body>
     <div class="poke-container">
         {% for id in range(0, 151) %}
-        <div class="pokemon">
-            <div class="img-container">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{id+1}}.png">
+        <a href="{{id+1}}">
+            <div class="pokemon">
+                <div class="img-container">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{id+1}}.png">
+                </div>
+                <div class="info">
+                    <span class="number">{{ id+1 }}</span>
+                    <h3 class="name">{{ pokemon['pokemon_entries'][id]['pokemon_species']['name'].capitalize() }}</h3>
+                </div>
             </div>
-            <div class="info">
-                <span class="number">{{ id+1 }}</span>
-                <a href="{{id+1}}"><h3 class="name">{{ pokemon['pokemon_entries'][id]['pokemon_species']['name'].capitalize() }}</h3></a>
-            </div>
-        </div>
-    {% endfor %}
+        </a>
+        {% endfor %}
     </div>
 </body>
 
