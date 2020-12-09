@@ -8,11 +8,13 @@ app = Flask(__name__)
 def home():
     r = requests.get('https://pokeapi.co/api/v2/pokedex/2')
     pokemon = r.json()
+    return render_template('index.html', pokemon=pokemon, title='PyDex')
 
-    res = requests.get('https://pokeapi.co/api/v2/pokemon/1')
-    poke = res.json()
-
-    return render_template('index.html', pokemon=pokemon, poke=poke, title='PyDex')
+@app.route('/<pokemon_id>', methods=['GET'])
+def pokemon(pokemon_id):
+  r = requests.get('https://pokeapi.co/api/v2/pokemon/{}'.format(pokemon_id))
+  pokemon = r.json()
+  return render_template('pokemon.html', pokemon=pokemon, pokemon_id=pokemon_id, title='Pydex')
 
 if __name__ == "__main__":
-  app.run()
+  app.run(debug=True)

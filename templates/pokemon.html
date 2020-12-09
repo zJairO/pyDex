@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='pokemon.css') }}">
     <title>PyDex</title>
 </head>
 <nav style="text-align: center;">
@@ -19,17 +19,19 @@
 
 <body>
     <div class="poke-container">
-        {% for id in range(0, 151) %}
         <div class="pokemon">
             <div class="img-container">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{id+1}}.png">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ pokemon_id }}.png">
             </div>
             <div class="info">
-                <span class="number">{{ id+1 }}</span>
-                <a href="{{id+1}}"><h3 class="name">{{ pokemon['pokemon_entries'][id]['pokemon_species']['name'].capitalize() }}</h3></a>
+                <span class="number">{{ pokemon_id }}</span>
+                <h3 class="name">Name: {{ pokemon['name'].capitalize() }}</h3>
+                <h3 class="name">Type: {{ pokemon['types'][0]['type']['name'] }} </h3>
+                <h3 class="name">Type: {{ pokemon['types'][0]['type']['name'] }} {{ pokemon['types'][1]['type']['name'] }} </h3>
+                <h3 class="name">Height: {{ pokemon['height'] }}</h3>
+                <h3 class="name">Weight: {{ pokemon['weight'] }}</h3>
             </div>
         </div>
-    {% endfor %}
     </div>
 </body>
 

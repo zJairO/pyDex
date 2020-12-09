@@ -29,14 +29,11 @@ a {
 .pokemon .img-container {
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 50%;
-    width: 120px;
-    height: 120px;
     text-align: center;
 }
 .pokemon .img-container img {
-    margin-top: 20px;
-    max-width: 90%;
     image-rendering: pixelated;
+    width: 300px;
 }
 .pokemon .info {
     margin-top: 20px;
@@ -44,7 +41,6 @@ a {
 .pokemon .number {
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    font-size: 0.8em;
     padding: 5px 10px;
 }
 .pokemon .name {
